@@ -142,4 +142,4 @@ A calculus concept called Chain Rule is used as part of the back propagation to 
 Back Propagation is complex so to learn more about it and how it works the fantastic youtube channel 3 blue 1 brown [explains it here](https://youtu.be/Ilg3gGewQ5U?si=dmYToojzrnuk_rpt).
 
 ### Where next
-This ends my brief blog detailing some of the core concepts of Neural Networks and how they work and learn. Hopefully now you've got an idea of the architecture and mathematics behind the neural network which inspires you to go away and learn more about it in more depth.
+In conclusion, this blog covered the core concepts of Neural Networks, giving an overview on their functionality and learning mechanisms. I hope this brief delve into the architecture and mathematics behind the neural network has given you a good first glance into the world of Neural Networks and inspired you to delve deeper into this fascinating subject.
