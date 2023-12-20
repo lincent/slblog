@@ -55,8 +55,10 @@ The Rectified Linear Unit (ReLU) has become the most popular and in most cases t
 ### SoftMax
 
 $$ \delta(z) = \frac{e^{z_{i}}}{\sum^{K}_{j=1}{e^{z_{j}}}} $$
+* $z$ a vector containing the output values
+* $K$ the number of output values
 
-The SoftMax Activation function is used for the final output layer for classification neural networks. It converts the output values into a probability distribution over the output classes. Each output neuron will represent the probability the input is of that class.
+The SoftMax Activation function is used for the final output layer for classification neural networks. It converts a vector of the output values into a probability distribution over the output classes. Each output neuron will then represent probability the input is of the respective class.
 
 ## Architecture of a Neural Network
 
