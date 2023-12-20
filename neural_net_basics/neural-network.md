@@ -1,5 +1,4 @@
-## Intro
-Recently I've been learning about Neural Networks and found myself wanting to write about the how they work from a basic level.
+Recently I've been learning about Neural Networks and how they work. In this blog post I write a simple introduction in to some of the core concepts of a basic layered neural network.
 
 ## What is a neural network made of?
 
@@ -55,7 +54,7 @@ The Rectified Linear Unit (ReLU) has become the most popular and in most cases t
 
 ### SoftMax
 
-$$ \delta(z) = \frac{e^{z_{i}}}{\sum_{j=1}^{K}e^{z_{j}}} $$
+$$ \delta(z) = \frac{e^{z_{i}}}{\sum^{K}_{j=1}{e^{z_{j}}}} $$
 
 The SoftMax Activation function is used for the final output layer for classification neural networks. It converts the output values into a probability distribution over the output classes. Each output neuron will represent the probability the input is of that class.
 
@@ -95,7 +94,7 @@ It has been proven that a neural network which has two layers and uses non-linea
 
 So how do the weights and biases of each neuron get set? 
 
-The weights and biases could be manually updated until the output of the neural network is correct. However neural networks can consist of millions/billions of parameters, so an automated process is required. 
+The weights and biases, the parameters, could be manually updated until the output of the neural network is correct. However neural networks can consist of millions/billions of parameters, so an automated process is required. 
 
 To be able to automate the process a way of evaluating the accuracy of the neural network is required. To do this a loss function can be used to give a value that indicates how far away the current neural network is from making an accurate evaluation.
 
@@ -113,7 +112,7 @@ The loss function enables an empirical analysis to see if the change in paramete
 A method called Gradient Descent can be used to determine how to adjust the parameters to reduce the loss.
 
 ### Gradient Descent
-Assume a single input neural network, with a single weight. If we plotted the weight v error graph we could have something like the following graph.
+Assume a single input neural network, with a single weight. If we plotted the weight v loss graph we could have something like the following graph.
 
 ![png](/neural_net_basics/assets/error_graph.png)
 
@@ -138,4 +137,7 @@ A mathematical concept called Back Propagation can be used to determine this, wh
 
 A calculus concept called Chain Rule is used as part of the back propagation to calculate the gradient of the error function with respect to each layers inputs, weights and biases.
 
-Back Propagation is complex so to learn more about it and how it works the following 3 blue 1 brown youtube video explains it [here](https://youtu.be/Ilg3gGewQ5U?si=dmYToojzrnuk_rpt).
+Back Propagation is complex so to learn more about it and how it works the fantastic youtube channel 3 blue 1 brown [explains it here](https://youtu.be/Ilg3gGewQ5U?si=dmYToojzrnuk_rpt).
+
+### Where next
+This ends my brief blog detailing some of the core concepts of Neural Networks and how they work and learn. Hopefully now you've got an idea of the architecture and mathematics behind the neural network which inspires you to go away and learn more about it in more depth.
