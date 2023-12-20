@@ -5,9 +5,9 @@ Recently I've been learning about Neural Networks and found myself wanting to wr
 
 All neural networks are made up of a network of neurons, much like the brain that they model, but what is a neuron?
 
-A neuron is made up of it's inputs, some weights, a bias and activation function and an output and was originally intended to replicate the biological neuron.
+A neuron is made up of its inputs, weights, a bias, an activation function and a singular output. It was originally intended to replicate the biological neuron.
 
-There is a one to one ratio of inputs to weights, which when combined gives a series of weighted inputs that get summed together. To this sum a bias get's added.
+There is a one to one ratio of inputs to weights, which when combined gives a series of weighted inputs that get summed together. To this sum a bias gets added.
 
 This can be represented mathematically as follows
 
@@ -22,12 +22,17 @@ $$ f(x)= \sum^n_{i=1}w_{i}x_{i}+b $$
 ![png](/neural_net_basics//assets//neuron.png)
 
 ## Why is an activation function important?
-A neuron, with a single input, is a linear function, $y = ax+b$, and as such can only form simple decision boundaries. An increase in the number of inputs and neurons in the neural network will still result in a linear function. This is because multiple combined linear functions always results in a linear function. 
+A neuron, with a single input, is a linear function, $y = ax+b$, and as such can only form simple decision boundaries. An increase in the number of inputs and neurons in the neural network will still result in a linear function. This is because multiple combined linear functions always results in a linear function.
+
+#### add 3 graphs, first 2 are two linear then the third the sum of the two previous
 
 To resolve this issue, and allow the network to find complex decision boundaries, one that wiggles around separating multiple classes, we need to use activation functions, they add non-linearity.
 
+#### add 3 graphs, first 2 are the sigmoid version of above, with the third the sum of the two sigmoids
+
 ### Step Function
 ![png](/neural_net_basics//assets//step.png) 
+
 $$ f(x) =\begin{cases}0 & x < 0\\1 & x  \geq  0\end{cases} $$
 
 The original activation function, used in the original perceptron in the 1950's. This function converts the output of the summation function into a binary value.
@@ -36,16 +41,22 @@ Due to the nature of the step in the function, changes to the weights and bias m
 
 ### Logistic Function a.k.a Sigmoid function
 ![png](/neural_net_basics//assets//sigmoid.png)
+
 $$ f(x) = \frac{1}{1 + e^{-x}}$$
+
 The Logistic function, a variant of the sigmoid function, initially replaced the step function. Like the Step function it limits the output of a neuron between 0 and 1, but doesn't have the same issues around the zero mark. This makes it easier to train as a change to the weights and biases will always have an effect, except at the extremes.
 
 ### Rectified Linear Unit (ReLU)
 ![png](/neural_net_basics//assets//relu.png)
+
 $$ f(x) = max(0,x) $$
-The Rectified Linear  (ReLU) has become the most popular and in most cases the default activation function to use for deep neural networks. It takes the maximum value of either 0 or the input, essentially putting any negative input value to 0 immediately.
+
+The Rectified Linear Unit (ReLU) has become the most popular and in most cases the default activation function to use for deep neural networks. It takes the maximum value of either 0 or the input, essentially putting any negative input value to 0 immediately.
 
 ### SoftMax
+
 $$ \delta(z) = \frac{e^{z_{i}}}{\sum_{j=1}^{K}e^{z_{j}}} $$
+
 The SoftMax Activation function is used for the final output layer for classification neural networks. It converts the output values into a probability distribution over the output classes. Each output neuron will represent the probability the input is of that class.
 
 ## Architecture of a Neural Network
@@ -59,33 +70,32 @@ There are three layer categories
 3. Output Layer
 
 ### 1. Input Layer
-The input layer is purely the values of the input data, no calculations take place. There is a neuron for each input value, for image classification neural networks, for grey scale images, there would be a node for each pixel. 
+The input layer is purely the values of the input data, no calculations take place. There is a neuron for each input value, for image classification neural networks of grey scale images there would be a neuron for each pixel. 
 
 ### 2. Hidden Layers
-If there is a single hidden layer then the neural network is considered to be a shallow neural network. If there are two or more hidden layers then it is considered to be a deep learning neural network.
 
-There can be any number of neurons in each hidden layer.
+The hidden layers are the work horse of the neural network, they are responsible for identifying features or transforming inputs into something the  output layer can use. 
+
+If there is a single hidden layer then the neural network is considered to be a shallow neural network. If there are two or more hidden layers then it is considered to be a deep learning neural network. The deeper the neural network the more complex patterns the neural network can learn, though this comes at a cost of requiring more computational power to train.
+
+There can be any number of neurons in each hidden layer, the more you have can lead to an increase in the information the neural network can identify in the input. Though an increase in neuron number can lead to over fitting to the training data
 
 ### 3. Output Layer
-The output layer gives the output of the neural network. For image classification there would be a node for each class of item to be classified, for example in hand written digit recognition there would be 10 nodes, one for each of the 10 digits.
+The output layer gives the output of the neural network. For image classification there would be a neuron for each class of item to be classified, for example in hand written digit recognition there would be 10 neurons, one for each of the 10 digits.
 
 ### How the layers are connected
 
-For the basic layered neural network, each neuron takes the outputs of every neuron in the previous layer as it’s input. With the first hidden layer taking the inputs to the neural network directly.
+For the basic layered neural network, each neuron takes the outputs of every neuron in the previous layer as its input. With the first hidden layer taking the inputs to the neural network directly.
 
 ![png](/neural_net_basics//assets//architecture.png)
 
-For a classifier neural network, the output layer has neuron that relates to specific classes of output. For example in a neural network that classifies numerical digits, of which there are 10, you would have 10 output neurons. The neuron with the highest output signifies which class the network has identified. 
-
-Using the SoftMax algorithm as the activation function for the final layer of a neural network you can convert the values of each classes output into a percentage value, indicating the certainty of the network at its classification.
-
-It has been proven that a neural work which has two layers and uses non-linear activation functions can be a universal function approximator, that can find any mathematical function.
+It has been proven that a neural network which has two layers and uses non-linear activation functions can be a universal function approximator, that can find any mathematical function.
 
 ## Determining the weights and biases (the parameters)
 
 So how do the weights and biases of each neuron get set? 
 
-The weights and Biases could be manually updated until the output of the neural network is correct. However neural networks can consist of millions/billions of parameters, so an automated process is required. 
+The weights and biases could be manually updated until the output of the neural network is correct. However neural networks can consist of millions/billions of parameters, so an automated process is required. 
 
 To be able to automate the process a way of evaluating the accuracy of the neural network is required. To do this a loss function can be used to give a value that indicates how far away the current neural network is from making an accurate evaluation.
 
@@ -120,7 +130,7 @@ $$ w_{i+1} = w_i - \alpha\frac{\delta L}{\delta w_i}$$
 
 The learning rate is used to control how much of a change to the weight is made, if the size of the weight change is too big then loss minima may be stepped over or it may never settle in the "valley" of the minima and constantly jump from side to side. If it's too small then it will take longer to reach the local minima.
 
-### Back Propagation - remove?!
+### Back Propagation
 
 To calculate the adjustment for every weight, then the gradient of the change in error with respect to change in each weight needs to be calculated. To do this for the final layer is fairly simple, but for a earlier layers it's not so simple.
 
@@ -128,10 +138,4 @@ A mathematical concept called Back Propagation can be used to determine this, wh
 
 A calculus concept called Chain Rule is used as part of the back propagation to calculate the gradient of the error function with respect to each layers inputs, weights and biases.
 
-To learn more about Gradient Descent and back propagation and how that works, the following resources should give you a good understanding of how it works.
-
-* resource 1
-* resource 2
-* resource 3
-
-### Learning 
+Back Propagation is complex so to learn more about it and how it works the following 3 blue 1 brown youtube video explains it [here](https://youtu.be/Ilg3gGewQ5U?si=dmYToojzrnuk_rpt).
