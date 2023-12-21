@@ -23,32 +23,37 @@ $$ f(x)= \sum^n_{i=1}w_{i}x_{i}+b $$
 ## Why is an activation function important?
 A neuron, with a single input, is a linear function, $y = ax+b$, and as such can only form simple decision boundaries. An increase in the number of inputs and neurons in the neural network will still result in a linear function. This is because multiple combined linear functions always results in a linear function.
 
-#### add 3 graphs, first 2 are two linear then the third the sum of the two previous
-
 To resolve this issue, and allow the network to find complex decision boundaries, one that wiggles around separating multiple classes, we need to use activation functions, they add non-linearity.
 
-#### add 3 graphs, first 2 are the sigmoid version of above, with the third the sum of the two sigmoids
+In the following graphs you can see examples of this, the dashed lines represent a neuron with a single weighted input, with the solid red line representing the sum of the three. See how in the first graph the red line is still a linear function. Mathematically this is because $(4x + 2) + (-3x - 4) + (-2x + 1)$ simplifies to $(-x - 1)$ 
+
+![png](/neural_net_basics/assets/with_out_activation.png)
+
+When putting the same neurons through activation functions, in this case logistic functions, non-linearity has been added to the system.
+
+![png](/neural_net_basics/assets/with_activation.png)
 
 ### Step Function
-![png](/neural_net_basics//assets//step.png) 
 
 $$ f(x) =\begin{cases}0 & x < 0\\1 & x  \geq  0\end{cases} $$
+
+![png](/neural_net_basics//assets//step.png) 
 
 The original activation function, used in the original perceptron in the 1950's. This function converts the output of the summation function into a binary value.
 
 Due to the nature of the step in the function, changes to the weights and bias make no difference until the output crosses the step boundary, at which point it flips the binary value. Due to a very small change to the weight having such a dramatic effect, it is hard to train the neural network.
 
 ### Logistic Function a.k.a Sigmoid function
-![png](/neural_net_basics//assets//sigmoid.png)
-
 $$ f(x) = \frac{1}{1 + e^{-x}}$$
+
+![png](/neural_net_basics//assets//sigmoid.png)
 
 The Logistic function, a variant of the sigmoid function, initially replaced the step function. Like the Step function it limits the output of a neuron between 0 and 1, but doesn't have the same issues around the zero mark. This makes it easier to train as a change to the weights and biases will always have an effect, except at the extremes.
 
 ### Rectified Linear Unit (ReLU)
-![png](/neural_net_basics//assets//relu.png)
-
 $$ f(x) = max(0,x) $$
+
+![png](/neural_net_basics//assets//relu.png)
 
 The Rectified Linear Unit (ReLU) has become the most popular and in most cases the default activation function to use for deep neural networks. It takes the maximum value of either 0 or the input, essentially putting any negative input value to 0 immediately.
 
