@@ -123,9 +123,9 @@ Assume a single input neural network, with a single weight. If we plotted the we
 
 ![png](/neural_net_basics/assets/error_graph.png)
 
-Say the red x is the current value of the error based on the current weight and the green x is the minimum error. 
+Say the red marker is the current value of the error based on the current weight and the green dot is the minimum error. The aim is to calculate the value of weight that gives us that minimum value.   
 
-To calculate the new weight value, take the derivative of the error in respect to the weight and subtract the value from the current weight.
+To calculate the new weight value, take the derivative of the error in respect to the weight and subtract the value from the current weight. In effect finding a new value that is lower down the slope of the graph towards the local or global minima.
 
 $$ w_{i+1} = w_i - \alpha\frac{\delta L}{\delta w_i}$$
 
